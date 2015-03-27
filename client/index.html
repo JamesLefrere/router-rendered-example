@@ -1,0 +1,47 @@
+<head>
+	<title>router-rendered</title>
+</head>
+
+<template name="layout">
+	<div class="container">
+		<ul>
+			<li>
+				<a href="{{pathFor route='page1'}}">Page 1</a>
+			</li>
+			<li>
+				<a href="{{pathFor route='page2'}}">Page 2</a>
+			</li>
+			<li>
+				<a href="{{pathFor route='page3'}}">Page 3</a>
+			</li>
+		</ul>
+		<div class="pages">
+			{{> yield}}
+		</div>
+	</div>
+</template>
+
+<template name="page1">
+	<div class="page page-1">
+		<h1>Page 1</h1>
+		<p>Here is the text for page 1</p>
+	</div>
+</template>
+
+<template name="page2">
+	<div class="page page-2">
+		<h1>Page 2</h1>
+		<p>And here is the text for page 2</p>
+	</div>
+</template>
+
+<template name="page3">
+	<div class="page page-3">
+		<h1>Page 3</h1>
+		<p>Finally, here is the text for page 3</p>
+	</div>
+</template>
+
+<template name="loading">
+	<h1>Loading...</h1>
+</template>

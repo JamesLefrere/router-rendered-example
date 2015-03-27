@@ -1,0 +1,19 @@
+html, body {
+	margin: 0;
+	padding: 0;
+}
+
+.pages {
+	position: relative;
+}
+
+.page {
+	-webkit-transition: all 1s ease;
+	transition: all 1s ease;
+	left: 0;
+	position: absolute;
+}
+
+.page-on-right {
+	left: 100%;
+}
