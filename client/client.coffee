@@ -4,6 +4,7 @@ Router.configure
 
 class TheFatController extends RouteController
 	action: ->
+		console.clear()
 		@render @route.options.template
 		@render "#{@route.options.template}Nav", to: "nav"
 		return
@@ -25,15 +26,17 @@ Template.layout.onRendered ->
 	@find(".nav-items")._uihooks =
 		insertElement: (node, next) ->
 			console.log "insertElement nav", node, next
-			$(node).addClass("nav-on-left")
+			$(node).addClass("nav-on-right")
 			$(node).insertBefore(next)
 			Meteor.setTimeout ->
-				$(node).removeClass("nav-on-left")
+				$(node).removeClass("nav-on-right")
 			, 50
 			return
 		removeElement: (node) ->
-			console.log "removeElement nav", node
-			$(node).remove()
+			Meteor.setTimeout ->
+				console.log "removeElement nav", node
+				$(node).remove()
+			, 1000
 			return
 	@find(".pages")._uihooks =
 		insertElement: (node, next) ->
@@ -45,7 +48,9 @@ Template.layout.onRendered ->
 			, 50
 			return
 		removeElement: (node) ->
-			console.log "removeElement", node
-			$(node).remove()
+			Meteor.setTimeout ->
+				console.log "removeElement", node
+				$(node).remove()
+			, 1000
 			return
 	return

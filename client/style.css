@@ -12,6 +12,7 @@ html, body {
 	transition: all 1s ease;
 	left: 0;
 	position: absolute;
+	background: white;
 }
 
 .page-on-right {
@@ -28,8 +29,9 @@ html, body {
 	transition: all 1s ease;
 	left: 0;
 	position: absolute;
+	background: white;
 }
 
-.nav-on-left {
-	left: -100%;
+.nav-on-right {
+	left: 100%;
 }
