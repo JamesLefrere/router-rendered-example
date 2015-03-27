@@ -2,13 +2,39 @@ Router.configure
 	loadingTemplate: "loading"
 	layoutTemplate: "layout"
 
-Router.route "page1",
-	path: "/"
+class TheFatController extends RouteController
+	action: ->
+		@render @route.options.template
+		@render "#{@route.options.template}Nav", to: "nav"
+		return
 
-Router.route "page2"
-Router.route "page3"
+Router.route "page1",
+	controller: TheFatController
+	path: "/"
+	template: "page1"
+
+Router.route "page2",
+	controller: TheFatController
+	template: "page2"
+
+Router.route "page3",
+	controller: TheFatController
+	template: "page3"
 
 Template.layout.onRendered ->
+	@find(".nav-items")._uihooks =
+		insertElement: (node, next) ->
+			console.log "insertElement nav", node, next
+			$(node).addClass("nav-on-left")
+			$(node).insertBefore(next)
+			Meteor.setTimeout ->
+				$(node).removeClass("nav-on-left")
+			, 50
+			return
+		removeElement: (node) ->
+			console.log "removeElement nav", node
+			$(node).remove()
+			return
 	@find(".pages")._uihooks =
 		insertElement: (node, next) ->
 			console.log "insertElement", node, next
